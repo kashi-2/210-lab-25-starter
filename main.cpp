@@ -124,4 +124,47 @@ long long readSet(set<string>& s) {
     fin.close();
 
     return duration_cast<nanoseconds>(end - start).count();
+} 
+
+//sort 
+
+long long sortVector(vector<string>& v) {
+    auto start = high_resolution_clock::now();
+
+    sort(v.begin(), v.end());
+    
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+} 
+
+long long sortList(list<string>& l) {
+    auto start = high_resolution_clock::now();
+
+    l.sort();
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+} 
+
+//insert 
+
+long long insertVector(vector<string>& v) {
+    auto start = high_resolution_clock::now();
+
+    v.insert(v.begin() + v.size() / 2, TEST_CODE);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+} 
+
+long long insertList(list<string>& l) {
+    auto it = l.begin();
+    advance(it, l.size() / 2);
+
+    auto start = high_resolution_clock::now();
+
+    l.insert(it, TEST_CODE);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
 }
