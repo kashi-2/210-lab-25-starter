@@ -68,7 +68,6 @@ int main() {
 }
 
 //read
-
 long long readVector(vector<string>& v) {
     ifstream fin(FILENAME);
     if (!fin) {
@@ -127,7 +126,6 @@ long long readSet(set<string>& s) {
 } 
 
 //sort 
-
 long long sortVector(vector<string>& v) {
     auto start = high_resolution_clock::now();
 
@@ -147,7 +145,6 @@ long long sortList(list<string>& l) {
 } 
 
 //insert 
-
 long long insertVector(vector<string>& v) {
     auto start = high_resolution_clock::now();
 
@@ -164,6 +161,49 @@ long long insertList(list<string>& l) {
     auto start = high_resolution_clock::now();
 
     l.insert(it, TEST_CODE);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+} 
+
+long long insertSet(set<string>& s) {
+    auto start = high_resolution_clock::now();
+
+    s.insert(TEST_CODE);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+}
+
+//delete
+long long deleteVector(vector<string>& v) {
+    auto start = high_resolution_clock::now();
+
+    v.erase(v.begin() + v.size() / 2);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+}
+
+long long deleteList(list<string>& l) {
+    auto it = l.begin();
+    advance(it, l.size() / 2);
+
+    auto start = high_resolution_clock::now();
+
+    l.erase(it);
+
+    auto end = high_resolution_clock::now();
+    return duration_cast<nanoseconds>(end - start).count();
+}
+
+long long deleteSet(set<string>& s) {
+    auto it = s.begin();
+    advance(it, s.size() / 2);
+
+    auto start = high_resolution_clock::now();
+
+    s.erase(it);
 
     auto end = high_resolution_clock::now();
     return duration_cast<nanoseconds>(end - start).count();
