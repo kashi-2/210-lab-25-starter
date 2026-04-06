@@ -66,3 +66,62 @@ int main() {
 
     return 0;
 }
+
+//read
+
+long long readVector(vector<string>& v) {
+    ifstream fin(FILENAME);
+    if (!fin) {
+        cout << "Error opening file for vector\n";
+        return 0;
+    }
+
+    auto start = high_resolution_clock::now();
+
+    string temp;
+    while (fin >> temp)
+        v.push_back(temp);
+
+    auto end = high_resolution_clock::now();
+    fin.close();
+
+    return duration_cast<nanoseconds>(end - start).count();
+}
+
+long long readList(list<string>& l) {
+    ifstream fin(FILENAME);
+    if (!fin) {
+        cout << "Error opening file for list\n";
+        return 0;
+    }
+
+    auto start = high_resolution_clock::now();
+
+    string temp;
+    while (fin >> temp)
+        l.push_back(temp);
+
+    auto end = high_resolution_clock::now();
+    fin.close();
+
+    return duration_cast<nanoseconds>(end - start).count();
+}
+
+long long readSet(set<string>& s) {
+    ifstream fin(FILENAME);
+    if (!fin) {
+        cout << "Error opening file for set\n";
+        return 0;
+    }
+
+    auto start = high_resolution_clock::now();
+
+    string temp;
+    while (fin >> temp)
+        s.insert(temp);
+
+    auto end = high_resolution_clock::now();
+    fin.close();
+
+    return duration_cast<nanoseconds>(end - start).count();
+}
